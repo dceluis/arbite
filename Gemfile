@@ -35,6 +35,7 @@ gem 'bootstrap'
 gem 'poloniex'
 gem 'bittrex'
 
+gem 'slim-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
