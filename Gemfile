@@ -32,6 +32,9 @@ gem 'redis', '~> 3.0'
 #
 gem 'bootstrap'
 
+gem 'poloniex'
+gem 'bittrex'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
