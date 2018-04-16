@@ -32,8 +32,9 @@ gem 'redis', '~> 3.0'
 #
 gem 'bootstrap'
 
-gem 'poloniex'
-gem 'bittrex'
+gem 'colorize'
+
+gem 'cryptoexchange', github: 'sanchez2210/cryptoexchange'
 
 gem 'slim-rails'
 
