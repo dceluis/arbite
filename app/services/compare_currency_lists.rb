@@ -22,8 +22,9 @@ class CompareCurrencyLists
     end
   end
 
-  def initialize(balance = nil)
+  def initialize(balance: nil, min: 1)
     @balance = balance
+    @min_matches = min
     @percentage_range = PercentageRange.new(0.1, 0.5, 0.8, 1.5, 6)
 
     @counters = UpdateCounters.new(*Array.new(MARKETS.length, 0))
@@ -61,7 +62,7 @@ class CompareCurrencyLists
             comparison[:percentage] < @percentage_range.max
         end
 
-        next if comparisons.length < 2
+        next if comparisons.length < @min_matches
 
         comparisons.each do |comparison|
           puts(
