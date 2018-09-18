@@ -1,10 +1,10 @@
 class CompareCurrencyLists
   MARKETS = [
-    'gate',
-    # 'binance',
-    'poloniex',
+    'binance',
     'bittrex',
-    'cryptopia'
+    'cryptopia',
+    'gate',
+    'poloniex'
   ].freeze
 
   UpdateCounters = Struct.new(*MARKETS.map(&:to_sym))
@@ -85,8 +85,8 @@ class CompareCurrencyLists
       comparison = {}
 
       tickers.each do |other|
-        color = String.colors[MARKETS.index(ticker.market) % String.colors.length]
-        other_color = String.colors[MARKETS.index(other.market) % String.colors.length]
+        color = color_for_market(ticker.market)
+        other_color = color_for_market(other.market)
 
         comparison[:percentage] = compare(ticker, other)
         comparison[:buy_from] = other.market.capitalize.colorize(other_color)
@@ -102,6 +102,11 @@ class CompareCurrencyLists
     end
 
     results
+  end
+
+  def color_for_market(market)
+    colors = String.colors - [:black]
+    colors[MARKETS.index(market) % colors.length]
   end
 
   def compare(ticker, other)
